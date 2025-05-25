@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ProjectManager (Package)": {
+      "commandName": "MsixPackage",
+      "doNotLaunchApp": true,
+      "alwaysReinstallApp": true
+    },
+    "ProjectManager (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
