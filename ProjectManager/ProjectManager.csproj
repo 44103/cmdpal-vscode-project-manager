@@ -16,7 +16,11 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Content Remove="Assets\vscode.png" />
-	  <Content Remove="Assets\vscode.svg" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Assets\dark\remote.svg" />
+	  <None Remove="Assets\light\remote.svg" />
+	  <None Remove="Assets\vscode.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -38,6 +42,23 @@
 		<PackageReference Include="Microsoft.Web.WebView2" />
 		<PackageReference Include="System.Text.Json" />
 		<PackageReference Include="Shmuelie.WinRTServer" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Update="Assets\dark\folder.svg">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\dark\remote.svg">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\light\folder.svg">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\light\remote.svg">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="Assets\vscode.svg">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<!--
