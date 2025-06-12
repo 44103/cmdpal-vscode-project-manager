@@ -30,7 +30,7 @@ internal sealed partial class ProjectManagerPage : ListPage
 {
     public ProjectManagerPage()
     {
-        Icon = IconHelpers.FromRelativePath("Assets\\StoreLogo.png");
+        Icon = IconHelpers.FromRelativePath("Assets\\vscode.svg");
         Title = "VSCode Project Manager";
         Name = "Open";
     }

@@ -28,15 +28,18 @@ partial class OpenProjectCommand : InvokableCommand
     public OpenProjectCommand(Project project)
     {
         Match match = remoteRegex.Match(project.RootPath);
-        Resource = match switch
+        (Resource, Path, Icon) = remoteRegex.Match(project.RootPath) switch
         {
-            { Success: true } m => new Resource() { Name = m.Groups[1].Value, IsRemote = true },
-            _ => new Resource() { Name = "local", IsRemote = false },
-        };
-        Path = match switch
-        {
-            { Success: true } m => m.Groups[2].Value,
-            _ => project.RootPath,
+            { Success: true } m => (
+                new Resource { Name = m.Groups[1].Value, IsRemote = true },
+                m.Groups[2].Value,
+                IconHelpers.FromRelativePaths("Assets\\light\\remote.svg", "Assets\\dark\\remote.svg")
+            ),
+            _ => (
+                new Resource { Name = "local", IsRemote = false },
+                project.RootPath,
+                IconHelpers.FromRelativePaths("Assets\\light\\folder.svg", "Assets\\dark\\folder.svg")
+            ),
         };
     }
 
@@ -50,6 +53,7 @@ partial class OpenProjectCommand : InvokableCommand
             RedirectStandardOutput = true,
             CreateNoWindow = true,
         });
+
         return CommandResult.Hide();
     }
 }
