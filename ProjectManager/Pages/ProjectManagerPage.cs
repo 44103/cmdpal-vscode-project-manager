@@ -23,6 +23,7 @@ public class Project
     public bool Enabled { get; set; }
 }
 
+[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase, PropertyNameCaseInsensitive = true)]
 [JsonSerializable(typeof(List<Project>))]
 public partial class AppJsonSerializerContext : JsonSerializerContext { }
 
@@ -30,22 +31,33 @@ internal sealed partial class ProjectManagerPage : ListPage
 {
     public ProjectManagerPage()
     {
-        Icon = IconHelpers.FromRelativePath("Assets\\vscode.svg");
+        Icon = IconHelpers.FromRelativePath("Assets\\vscode.png");
         Title = "VSCode Project Manager";
         Name = "Open";
     }
 
     public override IListItem[] GetItems()
     {
-        string path = $"{GlobalStoragePath}\\alefragnani.project-manager\\projects.json";
+        string path = Path.Combine(GlobalStoragePath, "alefragnani.project-manager", "projects.json");
 
-        string jsonString = File.ReadAllText(path);
+        if (!File.Exists(path))
+        {
+            return [new ListItem(new NoProjectsFoundCommand()) { Title = "No projects found" }];
+        }
 
-        List<Project> projects = JsonSerializer.Deserialize<List<Project>>(jsonString, options)!;
+        try
+        {
+            string jsonString = File.ReadAllText(path);
+            var projects = JsonSerializer.Deserialize(jsonString, AppJsonSerializerContext.Default.ListProject) ?? new List<Project>();
 
-        return projects.Select(static x => new ListItem(new OpenProjectCommand(x)) { Title = x.Name })
-                       .Cast<IListItem>()
-                       .ToArray();
+            return projects.Select(static x => new ListItem(new OpenProjectCommand(x)) { Title = x.Name })
+                           .Cast<IListItem>()
+                           .ToArray();
+        }
+        catch (Exception ex)
+        {
+            return [new ListItem(new NoProjectsFoundCommand(ex.Message)) { Title = "Error loading projects" }];
+        }
     }
 
     private static string GlobalStoragePath
@@ -56,11 +68,4 @@ internal sealed partial class ProjectManagerPage : ListPage
             return Path.Combine(appDataPath, "Code", "User", "globalStorage");
         }
     }
-
-    private static readonly JsonSerializerOptions options = new JsonSerializerOptions
-    {
-        PropertyNameCaseInsensitive = true,
-        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        TypeInfoResolver = AppJsonSerializerContext.Default,
-    };
 }
