@@ -14,7 +14,7 @@ public partial class ProjectManagerCommandsProvider : CommandProvider
     public ProjectManagerCommandsProvider()
     {
         DisplayName = "VSCode Project Manager";
-        Icon = IconHelpers.FromRelativePath("Assets\\vscode.svg");
+        Icon = IconHelpers.FromRelativePath("Assets\\vscode.png");
         _commands = [
             new CommandItem(new ProjectManagerPage()) { Title = DisplayName },
         ];
