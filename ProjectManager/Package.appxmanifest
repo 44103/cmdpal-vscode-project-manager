@@ -11,7 +11,7 @@
   <Identity
     Name="KenkoYoshitomi.35188E3EA5220"
     Publisher="CN=B636CFB3-703B-4401-BE51-E29595A0F7B0"
-    Version="0.0.4.0" />
+    Version="0.0.5.0" />
   <!-- When you're ready to publish your extension, you'll need to change the
        Publisher= to match your own identity -->
 
@@ -74,7 +74,6 @@
   </Applications>
 
   <Capabilities>
-    <Capability Name="internetClient" />
     <rescap:Capability Name="runFullTrust" />
   </Capabilities>
 </Package>
