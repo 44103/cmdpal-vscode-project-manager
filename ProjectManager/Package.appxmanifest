@@ -18,7 +18,7 @@
   <Properties>
     <DisplayName>VSCode Project Manager</DisplayName>
     <PublisherDisplayName>Kenko Yoshitomi</PublisherDisplayName>
-    <Logo>Assets\vscode.png</Logo>
+    <Logo>Assets\proj-mng-icon.png</Logo>
   </Properties>
 
   <Dependencies>
@@ -37,7 +37,7 @@
       <uap:VisualElements
         DisplayName="VSCode Project Manager"
         Description="VSCode Project Manager"
-        BackgroundColor="transparent" Square44x44Logo="Assets\vscode.png" Square150x150Logo="Assets\vscode.png">
+        BackgroundColor="transparent" Square44x44Logo="Assets\proj-mng-icon.png" Square150x150Logo="Assets\proj-mng-icon.png">
         <uap:DefaultTile>
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo"/>
