@@ -20,7 +20,8 @@
 	<ItemGroup>
 		<None Remove="Assets\dark\remote.svg" />
 		<None Remove="Assets\light\remote.svg" />
-		<None Remove="Assets\vscode.png" />
+		<None Remove="Assets\proj-mng-icon.png" />
+		<None Remove="Assets\proj-mng-icon.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -56,7 +57,10 @@
 		<Content Update="Assets\light\remote.svg">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
-		<Content Update="Assets\vscode.png">
+		<Content Update="Assets\proj-mng-icon.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Update="Assets\proj-mng-icon.svg">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>

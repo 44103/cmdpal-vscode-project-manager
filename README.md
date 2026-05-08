@@ -10,3 +10,8 @@ This extension integrates with the VSCode [Project Manager](https://marketplace.
 
 
 This repository got inspiration from [Raycast Extension](https://www.raycast.com/MarkusLanger/vscode-project-manager).
+
+## Acknowledgements
+
+- Icon: [Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons) (MIT License)
+
